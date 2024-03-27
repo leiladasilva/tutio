@@ -36,7 +36,7 @@ const produto = reactive({
 <button @click="mostrarresultado= !mostrarresultado" >mostrar</button>
 
         </div>
-        <div class="resultado">
+        <div v-if="mostrarresultado" class="resultado">
             <h2>Dados do produto</h2>
             <p>Nome:{{ produto.nome }}</p>
             <p>preço:{{ produto.preco }}</p>
