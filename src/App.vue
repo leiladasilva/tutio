@@ -1,6 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue'
-const titulo = ref('oi vuejs')
+const titulo = ref('Bem vindo')
 const mostrarresultado = ref(false)
 const categorias = [{
   id: 1,
@@ -17,6 +17,12 @@ const produto = reactive({
   quantidade: 0,
   categoria: [],
 })
+
+function senhaok() {
+  if (senha === confirmaçãosenha) {
+    alert(`senha ok`)
+  }
+}
 
 </script>
 
@@ -39,95 +45,113 @@ const produto = reactive({
 
       <div class="row">
         <label for="nome">Email</label>
-        <input type="text" v-model="produto.email" >
+        <input type="text" v-model="produto.email">
       </div>
 
 
       <div class="row">
         <label for="nome">senha</label>
-        <input type="text" v-model="produto.senha">
+        <input type="text" v-model="senha">
       </div>
 
 
       <div class="row">
         <label for="nome">confirme a senha </label>
-        <input type="text" v-model="produto.confirmaçãosenha">
+        <input type="text" v-model="confirmaçãosenha">
       </div>
 
       <div class="row">
         <label for="nome">data de nascimento</label>
-        <input type="text" v-model="produto.data" >
+        <input type="text" v-model="produto.data">
       </div>
 
 
       <div class="row">
         <label for="quantidade">endereço</label>
-        <input type="text" v-model="produto.endereço" >
+        <input type="text" v-model="produto.endereço">
       </div>
-      
+
       <div class="row">
         <label for="quantidade">cidade</label>
-        <input type="text" v-model="produto.cidade" >
+        <input type="text" v-model="produto.cidade">
       </div>
 
-<select>
-  
-  <label for="estado">estado</label>
-  <input type="option" v-model="produto.estado">
-  <option value="estado">AC</option>
-  <option value="estado">AL</option>
-  <option value="estado">AP</option>
-  <option value="estado">AM</option>
-  <option value="estado">BA</option>
-  <option value="estado">CE</option>
-  <option value="estado">DF</option>
-  <option value="estado">ES</option>
-  <option value="estado">GO</option>
-  <option value="estado">MA</option>
-  <option value="estado">MT</option>
-  <option value="estado">MS</option>
-  <option value="estado">MG</option>
-  <option value="estado">PA</option>
-  <option value="estado">PB</option>
-  <option value="estado">PR</option>
-  <option value="estado">PE</option>
-  <option value="estado">PI</option>
-  <option value="estado">RJ</option>
-  <option value="estado">RN</option>
-  <option value="estado">RS</option>
-  <option value="estado">RO</option>
-  <option value="estado">RR</option>
-  <option value="estado">SC</option>
-  <option value="estado">SP</option>
-  <option value="estado">SE</option>
-  <option value="estado">TO</option>
-</select>
+
+      <div class="row">
+        <label for="quantidade">estado</label>
+
+        <select v-model="produto.estado">
+          <input type="option">
+          <option value="Acre">AC</option>
+          <option value="Alagoas">AL</option>
+          <option value="Amapa">AP</option>
+          <option value="Amazona">AM</option>
+          <option value="Bahia">BA</option>
+          <option value="Ceara">CE</option>
+          <option value="Distrito Federal">DF</option>
+          <option value="Espirito santo">ES</option>
+          <option value=" Goiás">GO</option>
+          <option value="Maranhão">MA</option>
+          <option value=" Mato Grosso">MT</option>
+          <option value=" Mato Grosso do Sul">MS</option>
+          <option value=" Minas Gerais">MG</option>
+          <option value="Pará">PA</option>
+          <option value=" Paraíba ">PB</option>
+          <option value="Paraná">PR</option>
+          <option value="Pernambuco">PE</option>
+          <option value="Piauí">PI</option>
+          <option value=" Rio de Janeiro">RJ</option>
+          <option value=" Rio Grande do Norte">RN</option>
+          <option value="Rio Grande do Sul ">RS</option>
+          <option value="Rondônia">RO</option>
+          <option value=" Roraima">RR</option>
+          <option value=" Santa Catarina ">SC</option>
+          <option value=" São Paulo ">SP</option>
+          <option value="Sergipe">SE</option>
+          <option value=" Tocantins">TO</option>
+        </select>
+      </div>
 
 
-     <fieldset>
+      <fieldset>
         <legend>linguagem de programação</legend>
         <div class="items-checkbox">
           <input type="checkbox" value="pyton" v-model="produto.categoria" /> pyton
-          <input type="checkbox" value="java" v-model="produto.categoria" /> java 
+          <input type="checkbox" value="java" v-model="produto.categoria" /> java
           <input type="checkbox" value="php" v-model="produto.categoria" /> php
         </div>
       </fieldset>
 
+      <div class="row">
+        <label for="quantidade">biografia</label>
+        <input type="text" v-model="produto.biografia">
+      </div>
+
+      <div class="row">
+        <label for="quantidade">hobbies</label>
+        <input type="text" v-model="produto.hobbies">
+      </div>
 
 
-      
+
+
     </div>
     <div v-if="mostrarresultado" class="resultado">
       <h2>Dados do produto</h2>
+      <p>cidade: {{ produto.cidade }}</p>
+      <p>senha : {{ senha }}</p>
+      <p> confime sua senha {{ confirmaçãosenha }}</p>
       <p> estado: {{ produto.estado }}</p>
       <p>email:{{ produto.email }}</p>
       <p>Nome:{{ produto.nome }}</p>
       <p>quantidade:{{ (produto.quantidade) }}</p>
       <p>categoria:{{ produto.categoria }}</p>
-      <p>{{ mostrarresultado }}</p>
+      <p>bigrafia : {{ produto.biografia }}</p>
+      <p> hobbies : {{ produto.hobbies }}</p>
     </div>
 
   </div>
+
 </template>
 
 
