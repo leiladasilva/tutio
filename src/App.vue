@@ -2,7 +2,7 @@
 import { reactive, ref } from 'vue'
 const titulo = ref('Bem vindo')
 const mostrarresultado = ref(false)
-const categorias = [{
+const mostrasr = [{
   id: 1,
   nome: 'eletronicos'
 },
@@ -18,30 +18,23 @@ const produto = reactive({
   categoria: [],
 })
 
-function senhaok() {
-  if (senha === confirmaçãosenha) {
-    alert(`senha ok`)
-  }
-}
-
 </script>
 
 
 <template>
-  <h1>{{ titulo }}</h1>
-  <button class="btn btn-primary" @click="mostrarresultado = !mostrarresultado">resultado</button>
+  <h1><span style='font-size:60px;'>&#127872;</span>{{ titulo }}</h1>
+  <button class="btn" @click="mostrarresultado = !mostrarresultado">resultado</button>
   <div class="container">
+
     <div v-if="!mostrarresultado" class="formulario">
+
       <h2> formulario </h2>
+
       <input type="text" v-model="titulo">
       <div class="row">
         <label for="nome">Nome</label>
         <input type="text" v-model="produto.nome">
       </div>
-
-
-
-
 
       <div class="row">
         <label for="nome">Email</label>
@@ -62,7 +55,7 @@ function senhaok() {
 
       <div class="row">
         <label for="nome">data de nascimento</label>
-        <input type="text" v-model="produto.data">
+        <input type="date" v-model="produto.data">
       </div>
 
 
@@ -78,7 +71,7 @@ function senhaok() {
 
 
       <div class="row">
-        <label for="quantidade">estado</label>
+        <label for="">estado</label>
 
         <select v-model="produto.estado">
           <input type="option">
@@ -122,13 +115,14 @@ function senhaok() {
         </div>
       </fieldset>
 
+
       <div class="row">
-        <label for="quantidade">biografia</label>
+        <label for="biografia">biografia</label>
         <input type="text" v-model="produto.biografia">
       </div>
 
       <div class="row">
-        <label for="quantidade">hobbies</label>
+        <label for="hoppies">hobbies</label>
         <input type="text" v-model="produto.hobbies">
       </div>
 
@@ -138,16 +132,18 @@ function senhaok() {
     </div>
     <div v-if="mostrarresultado" class="resultado">
       <h2>Dados do produto</h2>
+      <p>Nome:{{ produto.nome }}</p>
+      <p>data de nascimento: {{ produto.data }}</p>
       <p>cidade: {{ produto.cidade }}</p>
       <p>senha : {{ senha }}</p>
-      <p> confime sua senha {{ confirmaçãosenha }}</p>
+      <p> confime sua senha: {{ confirmaçãosenha }}</p>
       <p> estado: {{ produto.estado }}</p>
       <p>email:{{ produto.email }}</p>
-      <p>Nome:{{ produto.nome }}</p>
-      <p>quantidade:{{ (produto.quantidade) }}</p>
-      <p>categoria:{{ produto.categoria }}</p>
+      <p>linguagem escolhida:{{ produto.categoria }}</p>
       <p>bigrafia : {{ produto.biografia }}</p>
-      <p> hobbies : {{ produto.hobbies }}</p>
+      <p> hobbies : {{ produto.hobbies }}
+      </p>
+      <span style='font-size:100px;'>&#127800;</span>
     </div>
 
   </div>
@@ -159,14 +155,15 @@ function senhaok() {
 .container {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+
   gap: 2rem;
   margin-top: 1rem;
+
 }
 
 .formulario,
 .resultado {
-  width: 45vw;
+  width: 50vw;
   min-height: 70vh;
   padding: 20px;
   border-radius: 20px;
@@ -179,7 +176,7 @@ function senhaok() {
 }
 
 .resultado {
-  background-color: rgb(198, 137, 255);
+  background-color: rgb(255, 167, 167);
 }
 
 .formulario .row {
@@ -198,5 +195,15 @@ function senhaok() {
 fieldset {
   border-image-repeat: 10px;
   background-color: rgb(255, 255, 255);
+
+}
+
+span {
+  text-align: left;
+}
+
+button {
+  background-color: deeppink;
+
 }
 </style>
